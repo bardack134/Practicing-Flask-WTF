@@ -2,12 +2,16 @@ from flask import Flask, redirect, render_template, request
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, StringField, validators
 from wtforms.validators import DataRequired, InputRequired
+from flask_bootstrap import Bootstrap5
+
 
 # Inicialización de la aplicación Flask
 app = Flask(__name__)
-
 # Clave secreta necesaria para manejar sesiones y CSRF protection
 app.config['SECRET_KEY'] = 'secretkey'  
+bootstrap = Bootstrap5(app)
+
+
 
 
 # Definición del formulario usando Flask-WTF
@@ -22,9 +26,13 @@ class MyForm(FlaskForm):
         validators.Length(min=6, message=('Little short for an email address?')),
     ])
 
+@app.route("/")
+def home():
+    return render_template('index.html')
+
 
 # Definición de la ruta principal ('/') y manejo de métodos GET y POST
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     
     form = MyForm()  # Instancia del formulario
@@ -46,7 +54,7 @@ def login():
             return render_template('success.html')  
         
         else:
-            return render_template('login.html', form=form)  # Renderizar la plantilla de inicio de sesión con el formulario
+            return render_template('denied.html')  # si los datos ingresados por el usuario son incorrectos
     
     else:
         

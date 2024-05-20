@@ -1,0 +1,34 @@
+
+<html lang="en">
+<head>
+    
+    <link rel="stylesheet" href="style.css" />
+
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {{ bootstrap.load_css() }}
+    <style>
+        {% block styling %}
+        body{
+            background: #efdedf ;
+        }
+        {% endblock %}
+    </style>
+    
+
+</head>
+<body>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+
+    <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2008 by <a href="http://domain.invalid/">you</a>.
+        {% endblock %}
+    </div>
+
+
+    {{ bootstrap.load_js() }}
+</body>
+</html>
