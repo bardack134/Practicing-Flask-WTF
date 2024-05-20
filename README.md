@@ -8,3 +8,6 @@ A simple web application created with Flask and Flask-WTF,  styled with Bootstra
 - Form Validation: The form includes validators to ensure that the email and password are entered correctly.
 - Credential Verification: Verifies the entered credentials against a predefined set and displays the corresponding page based on the verification result.
 - Styling with Bootstrap: Utilizes Bootstrap for a better presentation of the form and application pages.
+![img1](https://github.com/bardack134/Practicing-Flask-WTF/assets/142977989/073a535a-1b4a-44ef-bb42-a90a1a837d43)
+
+![img2](https://github.com/bardack134/Practicing-Flask-WTF/assets/142977989/0a914dd3-5c60-4e46-9470-85b6d4adde20)
