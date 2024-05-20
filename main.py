@@ -1,17 +1,8 @@
 from flask import Flask, redirect, render_template, request
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, StringField, validators
+from wtforms import PasswordField, StringField, SubmitField, validators
 from wtforms.validators import DataRequired, InputRequired
 from flask_bootstrap import Bootstrap5
-
-
-# Inicialización de la aplicación Flask
-app = Flask(__name__)
-# Clave secreta necesaria para manejar sesiones y CSRF protection
-app.config['SECRET_KEY'] = 'secretkey'  
-bootstrap = Bootstrap5(app)
-
-
 
 
 # Definición del formulario usando Flask-WTF
@@ -20,11 +11,22 @@ class MyForm(FlaskForm):
     # Campo de correo electrónico con validadores de longitud y formato de correo electrónico
     email = StringField('Email', [validators.Length(min=6, max=120), validators.Email()])
     
+    
     # Campo de contraseña con validadores de longitud y requerimiento de datos
     password = PasswordField('Password', validators=[
         DataRequired(), 
-        validators.Length(min=6, message=('Little short for an email address?')),
-    ])
+        validators.Length(min=6, message=('Little short for an email address?')) ])
+    
+    
+    submit = SubmitField(label="Log In")
+    
+    
+# Inicialización de la aplicación Flask
+app = Flask(__name__)
+# Clave secreta necesaria para manejar sesiones y CSRF protection
+app.config['SECRET_KEY'] = 'secretkey'  
+bootstrap = Bootstrap5(app)
+
 
 @app.route("/")
 def home():
